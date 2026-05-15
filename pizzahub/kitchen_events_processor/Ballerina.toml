@@ -1,0 +1,9 @@
+[package]
+org = "mohan"
+name = "kitchen_events_processor"
+version = "0.1.0"
+distribution = "2201.13.4"
+title = "Kitchen-Events-Processor"
+
+[build-options]
+sticky = true

@@ -1,0 +1,3 @@
+[workspace]
+title = "pizzahub"
+packages = ["kitchen_events_processor"]
