@@ -1,5 +1,5 @@
 [package]
-org = "mohan"
+org = "devantdemos"
 name = "kitchen_events_processor"
 version = "0.1.0"
 distribution = "2201.13.4"

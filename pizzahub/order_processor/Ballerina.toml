@@ -1,9 +1,9 @@
 [package]
 org = "devantdemos"
-name = "sales_data_aggregator"
+name = "order_processor"
 version = "0.1.0"
 distribution = "2201.13.4"
-title = "Sales-Data-Aggregator"
+title = "Order-Processor"
 
 [build-options]
 sticky = true
