@@ -1,0 +1,3 @@
+[workspace]
+title = "pizzahub"
+packages = ["kitchen_events_processor", "sales_data_aggregator", "order_processor", "test2"]
