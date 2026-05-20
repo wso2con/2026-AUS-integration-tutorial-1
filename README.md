@@ -22,14 +22,14 @@ This project contains three integrations:
 
 ### Scenario 1 — Order Processing API
 
-Customer places a pizza order using a mobile application.
+The customer places a pizza order using a mobile/web application.
 
 Flow:
 
 ```text
 Customer App
     |
-POST /pizza/placeOrder
+POST /pizza/orders
     |
     +--> Transform Request
     +--> Send Order → Kitchen System
@@ -65,8 +65,7 @@ Sample request:
       "size": "Medium",
       "quantity": 2
     }
-  ],
-  "paymentMethod": "CARD"
+  ]
 }
 ```
 
@@ -76,7 +75,7 @@ Sample response:
 {
   "orderId": "ORD-10045",
   "status": "CONFIRMED",
-  "estimatedReadyTime": "20 minutes",
+  "estimatedReadyTime": 20,
   "deliveryPartner": "QuickDrop",
   "deliveryEtaMinutes": 35
 }
