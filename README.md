@@ -96,7 +96,7 @@ Sample response:
 
 URL - https://e8f34e4e-e9bb-4799-b725-7173d271fa62-prod.e1-us-east-azure.choreoapis.dev/2on2026-ntegration/kitchenservice/v1.0
 
-Resource  `/orders`
+Resource : POST `/orders`
 
 Sample Request : 
 
@@ -132,7 +132,19 @@ Sample Response :
 
 URL - https://e8f34e4e-e9bb-4799-b725-7173d271fa62-prod.e1-us-east-azure.choreoapis.dev/2on2026-ntegration/delivaryservice/v1.0
 
+Resource - GET `/quotes`
 
+Query Parameters - orderId - string , address - string
+
+Sample Response
+
+```json
+{
+  "deliveryPartner": "string",
+  "etaMinutes": 0,
+  "orderId": "string"
+}
+```
 ---
 
 ### Scenario 2 — Kitchen Event Processing
