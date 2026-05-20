@@ -9,6 +9,7 @@ This project demonstrates how to build modern enterprise integrations using the 
 
 To Develop Integrations:
 - [WSO2 Integrator](https://wso2.com/integration-platform/docs/get-started/setup/local-setup) installed.
+- Optional - [Gmail API](https://central.ballerina.io/ballerinax/googleapis.gmail/4.2.0#setup-guide) access
 
 To Deoply Integrations:
 - [GitHub](https://github.com/signup) account
