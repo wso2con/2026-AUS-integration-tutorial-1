@@ -62,9 +62,10 @@ Sample request:
 ```json
 {
   "customerId": "CUST-1001",
-  "customerName": "John Silva",
+  "customerName": "John Doe",
   "phone": "+1-512-555-0198",
   "address": "123 Main St, Austin, TX",
+  "email": "johnd@gmail.com",
   "items": [
     {
       "pizza": "Margherita",
