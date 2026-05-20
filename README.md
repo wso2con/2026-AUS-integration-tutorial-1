@@ -92,6 +92,42 @@ Sample response:
 }
 ```
 
+**Kitchen Service**
+URL - https://e8f34e4e-e9bb-4799-b725-7173d271fa62-prod.e1-us-east-azure.choreoapis.dev/2on2026-ntegration/kitchenservice/v1.0
+Resource  `/orders`
+Sample Request : 
+
+```json
+{
+   "items":[
+      {
+         "pizza": "Pepparoni",
+         "quantity": 2,
+         "size": "L"
+      },
+      {
+         "pizza": "Cheese",
+         "quantity": 1,
+         "size": "M"
+      }
+   ],
+   "orderId": "Odlsl1"
+}
+```
+
+Sample Response : 
+
+```json
+{
+  "orderId": "SSKASK",
+  "status": "ACCEPTED",
+  "etaMinutes": 11
+}
+```
+
+**Delivary Service**
+URL - https://e8f34e4e-e9bb-4799-b725-7173d271fa62-prod.e1-us-east-azure.choreoapis.dev/2on2026-ntegration/delivaryservice/v1.0
+
 ---
 
 ### Scenario 2 — Kitchen Event Processing
