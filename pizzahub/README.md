@@ -1,41 +1,31 @@
-# 2026 WSO2Con AUS Integration Tutorial 1
+# PizzaHub - Pizza Store Implementation
 
-Welcome to the PizzaHub integration project used in the **WSO2Con Integration Tutorial: Low-Code and Pro-Code Integration Made Simple**. 🍕
-
-This project demonstrates how to build modern enterprise integrations using the WSO2 Integration Platform by combining APIs, automations, events, and legacy integrations.
-
----
+This is the implementation of the PizzaHub Pizza store. 
 
 ## Architecture Overview
 
-This project contains three integrations:
+This project contains three integrations.
 
-| Integration | Type | Purpose |
-|---|---:|---|
-| Order-Processor | API Integration | Handles customer order placement and orchestrates downstream systems |
-| Kitchen-Events-Processor | Event Integration | Processes real-time kitchen events and updates systems |
-| Sales-Data-Aggregator | Automation | Generates and sends sales reports |
-
----
+- Order-Processor(API Integration) - Handles customer order placement and orchestrates downstream systems 
+- Kitchen-Events-Processor(Event Integration) -Processes real-time kitchen events and updates systems 
+- Sales-Data-Aggregator(Automation) -Generates and sends sales reports
 
 ## Scenario Overview
 
 ### Scenario 1 — Order Processing API
 
-![Order Processing API](images/OrderProcessor.png)
-
-Customer places a pizza order using a mobile application.
+The customer places a pizza order using a mobile/web application.
 
 Flow:
 
 ```text
 Customer App
     |
-POST /pizza/placeOrder
+POST /pizza/orders
     |
     +--> Transform Request
     +--> Send Order → Kitchen System
-    +--> Request Delivery ETA
+    +--> Request Delivery ETA → Delivary System
     +--> Send confirmation email
     +--> Return Unified Response
 ```
@@ -67,8 +57,7 @@ Sample request:
       "size": "Medium",
       "quantity": 2
     }
-  ],
-  "paymentMethod": "CARD"
+  ]
 }
 ```
 
@@ -78,7 +67,7 @@ Sample response:
 {
   "orderId": "ORD-10045",
   "status": "CONFIRMED",
-  "estimatedReadyTime": "20 minutes",
+  "estimatedReadyTime": 20,
   "deliveryPartner": "QuickDrop",
   "deliveryEtaMinutes": 35
 }
