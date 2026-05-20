@@ -146,6 +146,12 @@ Sample Response
   "orderId": "string"
 }
 ```
+
+Code:
+
+```ballerina
+DelivaryResponse delivaryResponse = check delivaryService->/quotes.get(orderId = orderId, address = payload.address);
+```
 ---
 
 ### Scenario 2 — Kitchen Event Processing
