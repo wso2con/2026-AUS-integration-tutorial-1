@@ -10,6 +10,7 @@ public type PizzaOrderRequest record {|
     string customerName;
     string phone;
     string address;
+    string email;
     PizzaItem[] items;
     string paymentMethod;
 |};

@@ -1,7 +1,6 @@
 import ballerina/http;
 import ballerina/log;
 import ballerina/uuid;
-import ballerinax/googleapis.gmail;
 
 listener http:Listener httpDefaultListener = http:getDefaultListener();
 
@@ -15,11 +14,12 @@ service /pizza on httpDefaultListener {
             DeliveryResponse delivaryRes = check delivaryService->/quotes.get(orderId = orderId, address = payload.address);
             if kitchenRes.status == "ACCEPTED" {
                 PizzaOrderResponse res = {orderId, status: kitchenRes.status, estimatedReadyTime: kitchenRes.etaMinutes, deliveryPartner: delivaryRes.deliveryPartner, deliveryEtaMinutes: delivaryRes.etaMinutes};
-                gmail:Message gmailMessage = check gmailClient->/users/[string `anupama@wso2com`]/messages/send.post({
-                    to: ["piyumali06@gmail.com"],
-                    'from: "anupama@wso2.com",
-                    subject: "tesT",
-                    bodyInText: "Order accepted"
+                log:printInfo("sending");
+                _ = check gmailClient->/users/[pizzaHubEmail]/messages/send.post({
+                    to: [payload.email],
+                    'from: pizzaHubEmail,
+                    subject: "PizzaHub Order Status",
+                    bodyInText: string `Order id ${orderId} status : ${kitchenRes.status}`
                 });
                 return res;
             } else {

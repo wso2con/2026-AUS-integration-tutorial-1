@@ -1,28 +1,18 @@
-# 2026 WSO2Con AUS Integration Tutorial 1
+# PizzaHub - Pizza Store Implementation
 
-Welcome to the PizzaHub integration project used in the **WSO2Con Integration Tutorial: Low-Code and Pro-Code Integration Made Simple**. 🍕
-
-This project demonstrates how to build modern enterprise integrations using the WSO2 Integration Platform by combining APIs, automations, events, and legacy integrations.
-
----
+This is the implementation of the PizzaHub Pizza store. 
 
 ## Architecture Overview
 
-This project contains three integrations:
+This project contains three integrations.
 
-| Integration | Type | Purpose |
-|---|---:|---|
-| Order-Processor | API Integration | Handles customer order placement and orchestrates downstream systems |
-| Kitchen-Events-Processor | Event Integration | Processes real-time kitchen events and updates systems |
-| Sales-Data-Aggregator | Automation | Generates and sends sales reports |
-
----
+- Order-Processor(API Integration) - Handles customer order placement and orchestrates downstream systems 
+- Kitchen-Events-Processor(Event Integration) -Processes real-time kitchen events and updates systems 
+- Sales-Data-Aggregator(Automation) -Generates and sends sales reports
 
 ## Scenario Overview
 
 ### Scenario 1 — Order Processing API
-
-![Order Processing API](images/OrderProcessor.png)
 
 The customer places a pizza order using a mobile/web application.
 
