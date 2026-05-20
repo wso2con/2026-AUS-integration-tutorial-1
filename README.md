@@ -5,6 +5,14 @@ Welcome to the PizzaHub integration project used in the **WSO2Con Integration Tu
 This project demonstrates how to build modern enterprise integrations using the WSO2 Integration Platform by combining APIs, automations, events, and legacy integrations.
 
 ---
+## Prerequisites
+
+To Develop Integrations:
+- [WSO2 Integrator](https://wso2.com/integration-platform/docs/get-started/setup/local-setup) installed.
+
+To Deoply Integrations:
+- [GitHub](https://github.com/signup) account
+- [WSO2 Cloud](https://console.devant.dev/) account
 
 ## Architecture Overview
 
