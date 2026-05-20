@@ -87,6 +87,8 @@ Sample response:
 
 ### Scenario 2 — Kitchen Event Processing
 
+![Kitchen Event Processing](images/KitchenEventsProcessor.png)
+
 Kitchen systems publish order events in real time.
 
 Flow:
@@ -112,6 +114,8 @@ Capabilities demonstrated:
 ---
 
 ### Scenario 3 — Sales Data Automation
+
+![Sales Data Aggregation](images/SalesDataAggregator.png)
 
 Generate daily sales reports automatically.
 
