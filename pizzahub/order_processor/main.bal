@@ -1,31 +1,35 @@
 import ballerina/http;
 import ballerina/log;
 import ballerina/uuid;
+import ballerinax/googleapis.gmail;
 
 listener http:Listener httpDefaultListener = http:getDefaultListener();
 
 service /pizza on httpDefaultListener {
-    resource function post orders(@http:Payload PizzaOrderRequest payload) returns PizzaOrderResponse|error {
+    resource function post orders(@http:Payload OrderRequest payload) returns PizzaResponse|error {
         do {
-            log:printInfo("Order Received");
-            string orderId = payload.customerId + uuid:createType1AsString();
-            KitchenOrderRequest kitchenOrder = transform(payload, orderId);
-            KitchenOrderResponse kitchenRes = check kitchenService->/orders.post(kitchenOrder);
-            DeliveryResponse delivaryRes = check delivaryService->/quotes.get(orderId = orderId, address = payload.address);
-            if kitchenRes.status == "ACCEPTED" {
-                PizzaOrderResponse res = {orderId, status: kitchenRes.status, estimatedReadyTime: kitchenRes.etaMinutes, deliveryPartner: delivaryRes.deliveryPartner, deliveryEtaMinutes: delivaryRes.etaMinutes};
-                log:printInfo("sending");
-                _ = check gmailClient->/users/[pizzaHubEmail]/messages/send.post({
+            log:printInfo("Order request recieved");
+            string orderId = uuid:createType1AsString();
+            KitchenRequest kitchenRequest = transform(orderId, payload);
+            KitchenResponse kitchenResponse = check kitchenClient->post("/orders", kitchenRequest);
+            if kitchenResponse.status == "ACCEPTED" {
+                DelivaryResponse delivaryResponse = check delivaryClient->/quotes.get(orderId = orderId, address = payload.address);
+                PizzaResponse orderResponse = {
+                    orderId: orderId,
+                    status: kitchenResponse.status,
+                    estimatedReadyTime: kitchenResponse.etaMinutes,
+                    deliveryPartner: delivaryResponse.deliveryPartner,
+                    deliveryEtaMinutes: delivaryResponse.etaMinutes
+                };
+                gmail:Message gmailMessage = check gmailClient->/users/[string `wso2integrationdemos@gmail.com`]/messages/send.post({
                     to: [payload.email],
-                    'from: pizzaHubEmail,
-                    subject: "PizzaHub Order Status",
-                    bodyInText: string `Order id ${orderId} status : ${kitchenRes.status}`
+                    subject: "Order Status",
+                    bodyInText: string `Order ${orderId} status is : ${kitchenResponse.status}`
                 });
-                return res;
+                return orderResponse;
             } else {
-                return error("Order failed");
+                return error("Kitchen requested the order");
             }
-
         } on fail error err {
             // handle error
             return error("unhandled error", err);

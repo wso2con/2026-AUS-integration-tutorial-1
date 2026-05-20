@@ -1,5 +1,5 @@
 
-function transform(PizzaOrderRequest payload, string orderId) returns KitchenOrderRequest => {
-    orderId: orderId,
+function transform(string orderId, OrderRequest payload) returns KitchenRequest => {
+    orderId: orderId + payload.customerId,
     items: payload.items
 };
