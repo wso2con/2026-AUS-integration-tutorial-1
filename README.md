@@ -24,18 +24,18 @@ This project contains three integrations:
 
 ![Order Processing API](images/OrderProcessor.png)
 
-Customer places a pizza order using a mobile application.
+The customer places a pizza order using a mobile/web application.
 
 Flow:
 
 ```text
 Customer App
     |
-POST /pizza/placeOrder
+POST /pizza/orders
     |
     +--> Transform Request
     +--> Send Order → Kitchen System
-    +--> Request Delivery ETA
+    +--> Request Delivery ETA → Delivary System
     +--> Send confirmation email
     +--> Return Unified Response
 ```
@@ -67,8 +67,7 @@ Sample request:
       "size": "Medium",
       "quantity": 2
     }
-  ],
-  "paymentMethod": "CARD"
+  ]
 }
 ```
 
@@ -78,7 +77,7 @@ Sample response:
 {
   "orderId": "ORD-10045",
   "status": "CONFIRMED",
-  "estimatedReadyTime": "20 minutes",
+  "estimatedReadyTime": 20,
   "deliveryPartner": "QuickDrop",
   "deliveryEtaMinutes": 35
 }
