@@ -5,17 +5,16 @@ public type PizzaItem record {|
     int quantity;
 |};
 
-public type PizzaOrderRequest record {|
+public type OrderRequest record {|
     string customerId;
     string customerName;
     string phone;
     string address;
     string email;
     PizzaItem[] items;
-    string paymentMethod;
 |};
 
-public type PizzaOrderResponse record {|
+public type PizzaResponse record {|
     string orderId;
     string status;
     int estimatedReadyTime;
@@ -23,19 +22,19 @@ public type PizzaOrderResponse record {|
     int deliveryEtaMinutes;
 |};
 
-type KitchenOrderRequest record {|
-    string orderId;
+public type KitchenRequest record {|
     PizzaItem[] items;
+    string orderId;
 |};
 
-type KitchenOrderResponse record {|
+public type KitchenResponse record {|
     string orderId;
     string status;
     int etaMinutes;
 |};
 
-type DeliveryResponse record {|
-    string orderId;
+public type DelivaryResponse record {|
     string deliveryPartner;
     int etaMinutes;
+    string orderId;
 |};
