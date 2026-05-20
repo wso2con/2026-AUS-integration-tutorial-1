@@ -33,7 +33,7 @@ POST /pizza/orders
     |
     +--> Transform Request
     +--> Send Order → Kitchen System
-    +--> Request Delivery ETA
+    +--> Request Delivery ETA → Delivary System
     +--> Send confirmation email
     +--> Return Unified Response
 ```
